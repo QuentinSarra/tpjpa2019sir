@@ -7,6 +7,18 @@ import javax.persistence.PersistenceContext;
 import TP2.Participant;
 
 public class JpaTest {
+	
+	public void saveSondage() {
+		
+	}
+	
+	public void saveChoix() {
+		
+	}
+	
+	public void prefAlims() {
+		
+	}
 
 	/**
 	 * @param args
