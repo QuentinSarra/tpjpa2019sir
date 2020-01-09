@@ -18,8 +18,9 @@ public class Participant {
 	
 	
 	private List<Allergie> allergies = new ArrayList<Allergie>();
-	@ManyToMany
 	private List<Preference> preferences = new ArrayList<Preference>();
+	private List<Reunion> reunions = new ArrayList<Reunion>();
+	private List<Sondage> sondages = new ArrayList<Sondage>();
 	
 	@Id
 	public String getMail() {
@@ -65,6 +66,32 @@ public class Participant {
 	}
 	public void setPreferences(List<Preference> preferences) {
 		this.preferences = preferences;
+	}
+	
+	@ManyToMany
+	@JoinTable(
+			name="PARTICIPANT_REUNION",
+			joinColumns=@JoinColumn(name="mail"),
+			inverseJoinColumns=@JoinColumn(name="lien")
+			)
+	public List<Reunion> getReunions() {
+		return reunions;
+	}
+	public void setReunions(List<Reunion> reunion) {
+		this.reunions = reunion;
+	}
+	
+	@ManyToMany
+	@JoinTable(
+			name="PARTICIPANT_SONDAGE",
+			joinColumns=@JoinColumn(name="mail"),
+			inverseJoinColumns=@JoinColumn(name="lien")
+			)
+	public List<Sondage> getSondages() {
+		return sondages;
+	}
+	public void setSondages(List<Sondage> sondages) {
+		this.sondages = sondages;
 	}
 	
 

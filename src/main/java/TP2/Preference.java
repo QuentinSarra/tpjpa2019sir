@@ -13,7 +13,6 @@ public class Preference {
 	private String name;
 	private List<Participant> participants = new ArrayList<Participant>();
 	
-
 	public Preference() {
 	}
 
