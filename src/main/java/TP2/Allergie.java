@@ -33,6 +33,10 @@ public class Allergie {
 	public void setParticipants(List<Participant> participants) {
 		this.participants = participants;
 	}
+	
+	public void addParticipant(Participant p) {
+		participants.add(p);
+	}
 
 	
 }

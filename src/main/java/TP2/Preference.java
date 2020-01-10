@@ -34,4 +34,8 @@ public class Preference {
 		this.participants = participants;
 	}
 
+	public void addParticipant(Participant p) {
+		participants.add(p);
+	}
+
 }

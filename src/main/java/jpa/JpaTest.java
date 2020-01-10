@@ -1,10 +1,13 @@
 package jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 
-import TP2.Participant;
+import TP2.*;
 
 public class JpaTest {
 	
@@ -28,9 +31,14 @@ public class JpaTest {
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-
-
+		
+		
 		try {
+			
+			Allergie arachide = new Allergie();
+			arachide.setName("Arachide");
+			Preference legumes = new Preference();
+			legumes.setName("Legumes");
 			
 			Participant p1 = new Participant();
 			p1.setMail("p1@mail.com");
@@ -48,12 +56,18 @@ public class JpaTest {
 			p3.setMail("p3@mail.com");
 			p3.setPrenom("p3");
 			p3.setNom("Np3");
+			List<Preference> p3preferences = new ArrayList<Preference>();
+			p3preferences.add(legumes);
+			legumes.addParticipant(p3);
 			manager.persist(p3);
 			
 			Participant p4 = new Participant();
 			p4.setMail("p4@mail.com");
 			p4.setPrenom("p4");
 			p4.setNom("Np4");
+			List<Allergie> p4Allergies = new ArrayList<Allergie>();
+			p4Allergies.add(arachide);
+			arachide.addParticipant(p4);
 			manager.persist(p4);
 			
 			Participant p5 = new Participant();
@@ -61,6 +75,9 @@ public class JpaTest {
 			p5.setPrenom("p5");
 			p5.setNom("Np5");
 			manager.persist(p5);
+			
+			manager.persist(legumes);
+			manager.persist(arachide);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
